@@ -1,6 +1,6 @@
 import socket
 import sys
-from common_utilities import socket_to_screen, keyboard_to_socket
+from common_utilities import socket_send, keyboard_to_socket
 
 # Create the socket with which we will connect to the server
 cli_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -58,7 +58,7 @@ try:
             break
 
         # Then, read data from server and print on screen
-        bytes_read = socket_to_screen(cli_sock, srv_addr_str)
+        bytes_read = socket_send(cli_sock, srv_addr_str)
         if bytes_read == 0:
             print("Server closed connection.")
             break
